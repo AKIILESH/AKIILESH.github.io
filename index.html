@@ -1,121 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akilesh T | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Akilesh T</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0c0c;
+            --border: rgba(255,255,255,0.07);
+            --border-hover: rgba(255,255,255,0.15);
+            --text: #e8e8e8;
+            --muted: #666;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+        header { padding: 80px 0 60px; border-bottom: 1px solid var(--border); }
+        .label { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 28px; }
+
+        .header-inner { display: flex; align-items: center; gap: 20px; margin-bottom: 18px; }
+        .profile-pic { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); filter: grayscale(15%); flex-shrink: 0; }
+        h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.5px; }
+        .tagline { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+        .bio { font-size: 15px; color: #888; line-height: 1.75; margin-bottom: 28px; max-width: 520px; }
+
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; border-radius: 6px; border: 1px solid var(--border); color: #bbb; background: transparent; transition: border-color .2s, color .2s, background .2s; }
+        .btn:hover { border-color: var(--border-hover); color: var(--text); background: #161616; }
+        .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+        .btn-primary:hover { background: #ccc; border-color: #ccc; color: var(--bg); }
+        .btn i { font-size: 11px; }
+
+        section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+
+        .about-text { font-size: 15px; color: #888; line-height: 1.8; }
+        .about-text p + p { margin-top: 12px; }
+
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill { font-size: 13px; padding: 5px 14px; border: 1px solid var(--border); border-radius: 100px; color: #999; background: #111; transition: border-color .2s, color .2s; cursor: default; }
+        .skill:hover { border-color: var(--border-hover); color: var(--text); }
+
+        .project { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .project:last-child { border-bottom: none; padding-bottom: 0; }
+        .project-name { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+        .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+        .project-link { font-family: 'Space Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 4px; background: #111; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: border-color .2s, color .2s; }
+        .project-link:hover { border-color: var(--border-hover); color: #bbb; }
+
+        .contact-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: #888; font-size: 14px; transition: color .2s; }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row:hover { color: var(--text); }
+        .contact-left { display: flex; align-items: center; gap: 12px; }
+        .contact-left i { width: 16px; text-align: center; font-size: 13px; color: var(--muted); }
+        .arrow { font-size: 11px; color: var(--muted); transition: transform .2s; }
+        .contact-row:hover .arrow { transform: translateX(3px); color: #bbb; }
+
+        footer { padding: 36px 0; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+        .fade { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+        .fade.in { opacity: 1; transform: none; }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            .project { flex-direction: column; gap: 10px; }
+        }
+    </style>
 </head>
-
 <body>
+<div class="container">
 
-    <!-- Header Background -->
-    <header class="header-background">
-        <div class="header-text">Create.Innovate.Elevate</div>
-    </header>
-
-    <!-- Floating Profile Card -->
-    <section class="profile-card" data-aos="fade-up">
-        <div class="profile-content">
-            <img src="Profile.jpeg" alt="Profile Picture" class="profile-pic">
-            <div class="profile-text">
+    <header class="fade in">
+        <p class="label">create · innovate · elevate</p>
+        <div class="header-inner">
+            <img src="Profile.jpeg" alt="Akilesh T" class="profile-pic">
+            <div>
                 <h1>Akilesh T</h1>
-                <p>Web Developer | UI/UX Designer | Entrepreneur</p>
+                <p class="tagline">Web Developer · UI/UX Designer · Entrepreneur</p>
             </div>
         </div>
-    </section>
-    <br><br>
-    <!-- Buttons placed below the card -->
-    <div class="buttons" data-aos="fade-up">
-        <a href="assets/resume.pdf" download class="btn primary-btn">View Resume</a>
-        <a href="#contact" class="btn secondary-btn">Contact Me</a>
-    </div>
+        <p class="bio">Second-year IT student blending creativity with code. I build web products, design clean interfaces, and play basketball when the laptop closes.</p>
+        <div class="actions">
+            <a href="assets/resume.pdf" download class="btn btn-primary"><i class="fas fa-arrow-down"></i> Resume</a>
+            <a href="#contact" class="btn"><i class="fas fa-at"></i> Contact</a>
+        </div>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="card" data-aos="fade-up">
-        <h2>About Me</h2>
-        <p>Hey there! I’m Akilesh — a Second year Information Technology student who’s all about mixing creativity with
-            technology. By day, I’m coding and building awesome websites, but when the laptop closes, you’ll probably
-            find me on the basketball court shooting hoops or running a fast break!
-            <br><br>
-            I’m passionate about tech, but I also believe in having fun along the way. Whether it’s tinkering with new
-            coding projects, designing cool websites, or anything else, I’m always up for
-            something exciting.
-            <br><br>
-            Let’s just say I bring that same energy to my work — creative, dynamic, and always
-            aiming for the win!
-        </p>
-    </section>
-    <br><br>
-    <!-- Skills Section -->
-    <section id="skills" class="card" data-aos="fade-up">
-        <h2>Skills</h2>
-        <ul class="skills-list">
-            <li>Java</li>
-            <li>React</li>
-            <li>SQL & Databases</li>
-            <li>Wireframing</li>
-            <li>Prototyping</li>
-        </ul>
+    <section id="about" class="fade">
+        <p class="label">About</p>
+        <div class="about-text">
+            <p>I care about the intersection of design and engineering — where thoughtful UI meets solid code. Whether it's a booking platform, an AI-powered tool, or a financial tracker, I focus on the experience from first click to last interaction.</p>
+            <p>Outside tech, I bring the same drive to the basketball court. Competitive, collaborative, always improving.</p>
+        </div>
     </section>
 
-    <!-- Projects Section -->
-    <!-- Projects Section -->
-<section id="projects" class="projects-section" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="projects">
-        <div class="project-card">
-            <h3>Seat Scout</h3>
-            <p>Fully functional site with login, movie & events search, and seat selector, payment gateways still in progress.</p>
-            <br>
-            <a href="https://seat-scout-4agp.vercel.app/" target="_blank" class="btn primary-btn">View Project</a>
+    <section id="skills" class="fade">
+        <p class="label">Skills</p>
+        <div class="skills-wrap">
+            <span class="skill">Java</span>
+            <span class="skill">React</span>
+            <span class="skill">SQL & Databases</span>
+            <span class="skill">Wireframing</span>
+            <span class="skill">Prototyping</span>
+            <span class="skill">Leadership</span>
+            <span class="skill">Analysis</span>
+            <span class="skill">AI-powered thinking</span>
         </div>
-        <div class="project-card">
-            <h3>Real-Time Depth Estimation</h3>
-            <p>Real-time monocular depth estimation with object detection using PyTorch, OpenCV, and NumPy. Deployable on edge devices.</p>
-            <a href="https://github.com/AKIILESH/Monocular-Depth-Estimation-Using-Edge-AI" target="_blank" class="btn primary-btn">View Project</a>
+    </section>
+
+    <section id="projects" class="fade">
+        <p class="label">Projects</p>
+        <div class="project">
+            <div>
+                <p class="project-name">Seat Scout</p>
+                <p class="project-desc">Booking platform with login, movie & events search, and seat selector. Payment integration in progress.</p>
+            </div>
+            <a href="https://seat-scout-4agp.vercel.app/" target="_blank" class="project-link">live ↗</a>
         </div>
-        <div class="project-card">
-            <h3>PortaFi</h3>
-            <p>Real-time wealth , portfolio, asset tracker with insights,charts and more. TRack stocks, ETFs/MTFs, Crypto, Deposits, Savings.</p>
-            <a href="https://porta-fit3.vercel.app/" target="_blank"class="btn primary-btn">On Going</a>
+        <div class="project">
+            <div>
+                <p class="project-name">Real-Time Depth Estimation</p>
+                <p class="project-desc">Monocular depth estimation with object detection using PyTorch, OpenCV, and NumPy. Edge-device deployable.</p>
+            </div>
+            <a href="https://github.com/AKIILESH/Monocular-Depth-Estimation-Using-Edge-AI" target="_blank" class="project-link">github ↗</a>
         </div>
-    </div>
-</section>
-
-
-    <div class="contact-card" id="contact" data-aos="fade-up">
-        <h2>Contact</h2>
-        <div class="contact-grid">
-            <a href="mailto:akilesht2005@gmail.com" target="_blank">
-                <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="https://linkedin.com/in/akilesh-t" target="_blank">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://instagram.com/aki.ilesh" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="https://github.com/AKIILESH" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
+        <div class="project">
+            <div>
+                <p class="project-name">PortaFi</p>
+                <p class="project-desc">Real-time portfolio & wealth tracker with charts and insights. Covers stocks, ETFs, crypto, deposits, and savings.</p>
+            </div>
+            <a href="https://porta-fit3.vercel.app/" target="_blank" class="project-link">ongoing</a>
         </div>
-    </div>
+    </section>
 
+    <section id="contact" class="fade">
+        <p class="label">Contact</p>
+        <a href="mailto:akilesht2005@gmail.com" class="contact-row">
+            <span class="contact-left"><i class="fas fa-envelope"></i> akilesht2005@gmail.com</span>
+            <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://linkedin.com/in/akilesh-t" target="_blank" class="contact-row">
+            <span class="contact-left"><i class="fab fa-linkedin"></i> linkedin.com/in/akilesh-t</span>
+            <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://instagram.com/aki.ilesh" target="_blank" class="contact-row">
+            <span class="contact-left"><i class="fab fa-instagram"></i> @aki.ilesh</span>
+            <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://github.com/AKIILESH" target="_blank" class="contact-row">
+            <span class="contact-left"><i class="fab fa-github"></i> github.com/AKIILESH</span>
+            <i class="fas fa-arrow-right arrow"></i>
+        </a>
+    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Akilesh T. All rights reserved.</p>
-    </footer>
+    <footer>© 2025 Akilesh T</footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+</div>
+<script>
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
 </body>
-
 </html>
